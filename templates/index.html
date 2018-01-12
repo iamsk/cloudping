@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Showcases a horizontal menu that hides at
+     small window widths, and which scrolls when revealed.">
+    <title>Responsive Horizontal-to-Scrollable Menu &ndash; Layout Examples &ndash; Pure</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-"
+          crossorigin="anonymous">
+</head>
+<body>
+<style>
+    body {
+        width: 760px;
+        margin: 0 auto;
+    }
+
+    .title {
+        border-bottom: 1px solid #d3d3d3;
+    }
+
+    .content {
+        font-size: small;
+    }
+
+    .footer {
+        margin-top: 10px;
+        border-top: 1px solid #d3d3d3;
+        text-align: center;
+    }
+</style>
+<div>
+    <div class="pure-menu title">
+        <a href="/" class="pure-menu-heading">Cloud Ping</a>
+    </div>
+    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+        <ul class="pure-menu-list">
+            {% for c in cs %}
+            <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
+                <a href="/{{c.code}}" class="pure-menu-link">{{ c }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+            <table class="pure-table pure-table-bordered">
+                <thead>
+                <tr>
+                    <th>地域</th>
+                    <th>延迟</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for s in ss %}
+                <tr>
+                    <td>{{ s.region.name_cn }}({{ s.region.name_en }})</td>
+                    <td class="latency" endpoint='{{ s.endpoint }}'></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td id='imageCell'></td>
+                    <td>
+                        <input type="text" name="_love_oldlau" hidden>
+                        <button class="pure-button" id="pingbutton">HTTP Ping</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pure-u-1-2">
+        </div>
+    </div>
+    <div class="footer">
+        <p>This site is built with <3 using Django, Purecss, jQuery by Bin</p>
+    </div>
+    <script type="text/javascript" src="//cdn.staticfile.org/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var pingButton = $("#pingbutton");
+
+        function disablePingButton() {
+            pingButton.attr("disabled", "disabled");
+        };
+
+        function enablePingButton() {
+            pingButton.removeAttr("disabled");
+        };
+
+        // http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
+        function getURLParameter(name) {
+            var regex = new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)');
+            var matches = regex.exec(location.search);
+            if (matches == null) {
+                return null;
+            }
+            var value = matches[1];
+            var value = value.replace(/\+/g, '%20');
+            return decodeURIComponent(value);
+        }
+
+        $(document).ready(function () {
+            $("#pingbutton").click(pingButtonClicked);
+            if (getURLParameter("run")) {
+                $("#pingbutton").click();
+            }
+        });
+
+        function pingButtonClicked() {
+            disablePingButton();
+            var latencyBoxes = $(".latency").toArray();
+            latencyBoxes.reverse();
+            doNextBox(latencyBoxes);
+        }
+
+        function doNextBox(latencyBoxes) {
+            var box = latencyBoxes.pop();
+            if (box) {
+                var endpoint = box.getAttribute("endpoint");
+                step1_connect(box, endpoint, latencyBoxes);
+            } else {
+                enablePingButton();
+            }
+        }
+
+        var imageCell = $("#imageCell")
+
+        function ping_endpoint(endpoint, onComplete) {
+            var randomString = Math.floor(Math.random() * 0xFFFFFFFFFFFFFFFF).toString(36);
+            imageCell.empty();
+            imageCell.html("<img id='pingImage' style='display: none'>");
+            var pingImage = $("#pingImage");
+            pingImage.error(onComplete);
+            pingImage.attr("src", endpoint);
+        }
+
+        function step1_connect(box, endpoint, latencyBoxes) {
+            $(box).html("connecting");
+            ping_endpoint(endpoint, function () {
+                step2_ping(box, endpoint, latencyBoxes);
+            });
+        }
+
+        function currentTimeMillis() {
+            return (new Date()).getTime();
+        }
+
+        function step2_ping(box, endpoint, latencyBoxes) {
+            $(box).html("pinging");
+            var startTime = currentTimeMillis();
+            ping_endpoint(endpoint, function () {
+                step3_finish(startTime, box, latencyBoxes);
+            });
+        }
+
+        function step3_finish(startTime, box, latencyBoxes) {
+            var endTime = currentTimeMillis();
+            var elapsed = endTime - startTime;
+            var resultText = elapsed.toString() + " ms";
+            $(box).html(resultText);
+            doNextBox(latencyBoxes);
+        }
+    </script>
+</body>
+</html>
