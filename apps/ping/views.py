@@ -3,7 +3,7 @@ from .models import Service, Company
 
 
 class CompanyView(TemplateView):
-    template_name = "index.html"
+    template_name = "company.html"
 
     def get_context_data(self, **kwargs):
         context = super(CompanyView, self).get_context_data(**kwargs)
