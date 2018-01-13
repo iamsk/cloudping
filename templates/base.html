@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+          content="云主机, 云服务器, 云计算, 公有云, AWS, 阿里云, Microsoft Azure, Google Cloud Platform, 华为云, 腾讯云, 七牛云, 美团云, 互联网+解决方案, 速度, ping, 测速">
+    <meta name="description" content="{{ company.description }}">
+    <title>Bastionhost - Cloud Ping</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+</head>
+<body>
+<style>
+    body {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .title {
+        border-bottom: 1px solid #d3d3d3;
+    }
+
+    .header {
+        margin-bottom: 10px;
+    }
+
+    .pure-menu-link {
+        padding: 0.5em 0.4em;
+    }
+
+    .left {
+        margin-right: 20px;
+        font-size: small;
+    }
+
+    .cloudping-table {
+        letter-spacing: 0;
+        font-size: 12px;
+    }
+
+    .cloudping-th {
+        text-align: center;
+    }
+
+    .cloudping-td {
+        text-align: center;
+    }
+
+    .red:before {
+        content: ' \25CF';
+        font-size: 20px;
+        color: #ff3300;
+        padding-left: 5px;
+    }
+
+    .yellow:before {
+        content: ' \25CF';
+        font-size: 20px;
+        color: #e6e600;
+        padding-left: 5px;
+    }
+
+    .green:before {
+        content: ' \25CF';
+        font-size: 20px;
+        color: #00e600;
+        padding-left: 5px;
+    }
+
+    .footer {
+        border-top: 1px solid #d3d3d3;
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+<div class="header">
+    <div class="pure-menu title">
+        <a href="/" class="pure-menu-heading">Cloud Ping</a>
+    </div>
+    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item {% ifequal company 'all' %}pure-menu-selected{% endifequal %}">
+                <a href="/" class="pure-menu-link">全部</a></li>
+            {% for c in cs %}
+                <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
+                    <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="pure-g">
+    {% block content %}
+    {% endblock %}
+</div>
+<div class="footer">
+    <p>This site is built with <3 using Django, Purecss, jQuery © <a
+            href="http://bastionhost.org">bastionhost.org</a></p>
+</div>
+{% block js %}
+{% endblock %}
+</body>
+</html>
