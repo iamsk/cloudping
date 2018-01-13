@@ -5,7 +5,7 @@ class Company(models.Model):
     name_cn = models.CharField(max_length=30, null=True, blank=True)
     name_en = models.CharField(max_length=30, null=True, blank=True)
     code = models.CharField(max_length=30)
-    link = models.CharField(max_length=100)
+    link = models.CharField(max_length=300)
     order = models.IntegerField(default=0)
     description = models.TextField(null=True, blank=True)
 

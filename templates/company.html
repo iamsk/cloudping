@@ -3,11 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Showcases a horizontal menu that hides at
-     small window widths, and which scrolls when revealed.">
-    <title>Responsive Horizontal-to-Scrollable Menu &ndash; Layout Examples &ndash; Pure</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-"
-          crossorigin="anonymous">
+    <meta name="description" content="云主机, 云服务器, 云计算, 公有云, AWS, 阿里云, Microsoft Azure, Google Cloud Platform, 华为云, 腾讯云, 美团云, 互联网+解决方案, 速度, ping, 测速">
+    <title>Bastionhost - Cloud Ping</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 </head>
 <body>
 <style>
@@ -20,17 +18,21 @@
         border-bottom: 1px solid #d3d3d3;
     }
 
+    .header {
+        margin-bottom: 10px;
+    }
+
     .content {
         font-size: small;
     }
 
     .footer {
-        margin-top: 10px;
+        margin-top: 20px;
         border-top: 1px solid #d3d3d3;
         text-align: center;
     }
 </style>
-<div>
+<div class="header">
     <div class="pure-menu title">
         <a href="/" class="pure-menu-heading">Cloud Ping</a>
     </div>
@@ -72,6 +74,8 @@
             </table>
         </div>
         <div class="pure-u-1-2">
+            <p>{{ company.description }}</p>
+            <p>优惠券：<a href="{{ company.link }}">地址</a></p>
         </div>
     </div>
     <div class="footer">
