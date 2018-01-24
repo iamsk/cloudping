@@ -29,6 +29,10 @@
         border-bottom: 1px solid #d3d3d3;
     }
 
+    .menu {
+        margin-top: 0.5em;
+    }
+
     .header {
         margin-bottom: 10px;
     }
@@ -90,14 +94,23 @@
     <div class="pure-menu title">
         <a href="/" class="pure-menu-heading">Cloud Ping</a>
     </div>
-    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="pure-menu pure-menu-horizontal menu">
         <ul class="pure-menu-list">
             <li class="pure-menu-item {% ifequal company 'all' %}pure-menu-selected{% endifequal %}">
                 <a href="/" class="pure-menu-link">全部</a></li>
-            {% for c in cs %}
-                <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
-                    <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
+            {% for c in cs|slice:":8" %}
+            <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
+                <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
             {% endfor %}
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="menuLink" class="pure-menu-link">其他</a>
+                <ul class="pure-menu-children">
+                    {% for c in cs|slice:"8:" %}
+                    <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
+                        <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
