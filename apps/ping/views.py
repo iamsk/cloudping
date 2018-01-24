@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
 from django.views.generic import TemplateView
 from django.db.models import Count
-from collections import defaultdict
+
 from .models import Service, Company, Region
 
 
@@ -16,19 +18,22 @@ class IndexView(TemplateView):
         for r in rs:
             companies.append(Company.objects.get(pk=r['company']))
             counts.append(r['total'])
-
-        locations = Region.objects.order_by('order')
-        location_objs = []
-        for location in locations:
-            location_obj = [location]
-            for c in companies:
-                location_obj.append(bool(Service.objects.filter(company=c, region=location)))
-            location_objs.append(location_obj)
-
         context['companies'] = companies
         context['counts'] = counts
-        context['locations'] = location_objs
+        context['rows'] = self.get_rows(companies)
+        context['description'] = u'主流云平台地域分布及其延迟'
         return context
+
+    @classmethod
+    def get_rows(cls, companies):
+        locations = Region.objects.order_by('order')
+        rows = []
+        for location in locations:
+            row = [location]
+            for c in companies:
+                row.append(bool(Service.objects.filter(company=c, region=location)))
+            rows.append(row)
+        return rows
 
 
 class CompanyView(TemplateView):
@@ -37,6 +42,7 @@ class CompanyView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CompanyView, self).get_context_data(**kwargs)
         context['cs'] = Company.objects.order_by('order').all()
-        context['company'] = Company.objects.filter(code=kwargs['code']).first()
+        context['company'] = company = Company.objects.filter(code=kwargs['code']).first()
         context['ss'] = Service.objects.filter(company=context['company'], status=0).order_by('region__order')
+        context['description'] = company.description
         return context

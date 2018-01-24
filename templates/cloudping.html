@@ -19,9 +19,9 @@
             <td>{{ c }}</td>
         {% endfor %}
     </tr>
-    {% for l in locations %}
+    {% for row in rows %}
     <tr>
-        {% for c in l %}
+        {% for c in row %}
         <td class="cloudping-td">{% ifequal c True %}&#10003{% else %}{% if c %}{{ c }}{% endif %}{% endifequal %}</td>
         {% endfor %}
     </tr>
