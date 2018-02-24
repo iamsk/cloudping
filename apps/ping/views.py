@@ -25,7 +25,7 @@ class IndexView(TemplateView):
         context['company'] = 'all'
         context['counts'] = counts
         context['rows'] = self.get_rows(companies)
-        context['description'] = u'主流云平台地域分布及其延迟'
+        context['description'] = 'Distribution and latency of the most popular cloud platforms'
         return context
 
     @classmethod
