@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3 style="letter-spacing: 0;">各个云平台全球地域支持情况</h3>
+<h3 style="letter-spacing: 0;">Available regions for each company</h3>
 <table class="pure-table pure-table-bordered cloudping-table">
     <thead>
     <tr>
-        <th class="cloudping-th">地域/公司</th>
+        <th class="cloudping-th">Region/Company</th>
         {% for r in companies %}
             <th class="cloudping-th">{{ r }}</th>
         {% endfor %}
@@ -14,9 +14,9 @@
 
     <tbody>
     <tr>
-        <td>支持地域数</td>
+        <td class="cloudping-td">Region Count</td>
         {% for c in counts %}
-            <td>{{ c }}</td>
+            <td class="cloudping-td">{{ c }}</td>
         {% endfor %}
     </tr>
     {% for row in rows %}

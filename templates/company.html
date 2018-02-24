@@ -5,16 +5,16 @@
         <table class="pure-table pure-table-bordered left">
             <thead>
             <tr>
-                <th>位置</th>
-                <th>地域</th>
-                <th>延迟</th>
+                <th>Region</th>
+                <th>Alias</th>
+                <th>Latency</th>
             </tr>
             </thead>
 
             <tbody>
             {% for s in ss %}
                 <tr>
-                    <td>{{ s.region.name_cn }}({{ s.region.name_en }})</td>
+                    <td>{{ s.region.name_en }}</td>
                     <td>{{ s.code }}</td>
                     <td class="latency" endpoint='{{ s.endpoint }}'></td>
                 </tr>
@@ -33,7 +33,7 @@
     <div class="pure-u-1-3">
         <div>
             <p>{{ company.description }}</p>
-            <p>官网：<a href="{{ company.link }}" target="_blank">地址</a></p>
+            <p>Website: <a href="{{ company.link }}" target="_blank">Link</a></p>
         </div>
     </div>
 {% endblock %}

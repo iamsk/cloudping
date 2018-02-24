@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords"
-          content="云主机, 云服务, 云计算, 公有云, 云服务器, 速度, 测速, 延迟, ping, cloudping, cloud ping, 互联网+解决方案, {% for c in cs%}{{ c }}, {% endfor %}">
+          content="云主机, 云服务, 云计算, 公有云, 云服务器, 速度, 测速, 延迟, ping, cloudping, cloud ping, 互联网+解决方案, {% for c in companies%}{{ c }}, {% endfor %}">
     <meta name="description" content="{{ description }}">
     <title>Bastionhost - Cloud Ping</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
@@ -97,15 +97,15 @@
     <div class="pure-menu pure-menu-horizontal menu">
         <ul class="pure-menu-list">
             <li class="pure-menu-item {% ifequal company 'all' %}pure-menu-selected{% endifequal %}">
-                <a href="/" class="pure-menu-link">全部</a></li>
-            {% for c in cs|slice:":8" %}
+                <a href="/" class="pure-menu-link">All</a></li>
+            {% for c in companies|slice:":6" %}
             <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
                 <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
             {% endfor %}
             <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                <a href="#" id="menuLink" class="pure-menu-link">其他</a>
+                <a href="#" id="menuLink" class="pure-menu-link">Other</a>
                 <ul class="pure-menu-children">
-                    {% for c in cs|slice:"8:" %}
+                    {% for c in companies|slice:"6:" %}
                     <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
                         <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
                     {% endfor %}
