@@ -21,7 +21,7 @@
     </tr>
     {% for row in rows %}
     <tr>
-        {% for c in row %}
+        {% for c in row|slice:":10" %}
         <td class="cloudping-td">{% ifequal c True %}&#10003{% else %}{% if c %}{{ c }}{% endif %}{% endifequal %}</td>
         {% endfor %}
     </tr>
