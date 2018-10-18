@@ -38,10 +38,10 @@ Run server:
 * Vultr: https://www.vultr.com/faq/#downloadspeedtests
 * 阿里云: https://help.aliyun.com/document_detail/40654.html
 * 金山云: https://docs.ksyun.com/directories/1782
-* UCloud：
-* Linode：
-* 美团云：
-* 华为云：
+* UCloud：https://docs.ucloud.cn/api/summary/regionlist
+* Linode：https://www.linode.com/speedtest
+* 美团云：https://www.mtyun.com/doc/products/manage/Region/index
+* 华为云：https://support.huaweicloud.com/obs/index.html
 
 ## Refs
 
