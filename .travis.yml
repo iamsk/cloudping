@@ -1,6 +1,6 @@
 language: python
 env:
-  - DJANGO=1.8.18
+  - DJANGO=2.1.3
 python:
   - "2.7"
 # command to install dependencies
