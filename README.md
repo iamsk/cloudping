@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/bastionhost/cloudping.png?branch=master)](https://travis-ci.org/bastionhost/cloudping)
 
-![demo](./screenshoot.png)
+![demo](./media/screenshoot.png)
 
 Visit http://cloudping.bastionhost.org/ for all clouds!
 
