@@ -35,8 +35,10 @@
             <p>{{ company.description }}</p>
             <p>官网：<a href="{{ company.link }}" target="_blank">地址</a></p>
         </div>
-        {% for promotion in promotions %}
-            <p class="promotion"><a href="{{ promotion.link }}" target="_blank"><img src="{{ promotion.thumbnail }}"></a></p>
+        {% for row in promotions %}
+            {% for promotion in row %}
+            <div><a class="promotion" href="{{ promotion.link }}" target="_blank"><img src="{{ promotion.thumbnail }}"></a></div>
+            {% endfor %}
         {% endfor %}
     </div>
 {% endblock %}

@@ -59,5 +59,7 @@ class CompanyView(BaseMixin, TemplateView):
         context['ss'] = Service.objects.filter(company=context['company'], status=0).order_by('region__order')
         context['description'] = company.description
         context['navigation_count'] = self.navigation_count()
-        context['promotions'] = Promotion.objects.filter(company=company).order_by('order')
+        promotions = Promotion.objects.filter(company=company).order_by('order')
+        rows = [promotions[i * 2:(i * 2) + 2] for i in range(len(promotions)/2 + 1)]
+        context['promotions'] = rows
         return context
