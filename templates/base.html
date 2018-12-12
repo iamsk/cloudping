@@ -21,7 +21,7 @@
 <body>
 <style>
     body {
-        max-width: 760px;
+        max-width: 960px;
         margin: 0 auto;
     }
 
@@ -63,6 +63,10 @@
         text-align: center;
     }
 
+    .promotion img {
+        height: 140px;
+    }
+
     .red:before {
         content: ' \25CF';
         font-size: 20px;
@@ -91,24 +95,28 @@
     }
 </style>
 <div class="header">
-    <div class="pure-menu title">
+    <div class="pure-menu title cloudping-th">
         <a href="/" class="pure-menu-heading">Cloud Ping</a>
     </div>
     <div class="pure-menu pure-menu-horizontal menu">
         <ul class="pure-menu-list">
             <li class="pure-menu-item {% ifequal company 'all' %}pure-menu-selected{% endifequal %}">
                 <a href="/" class="pure-menu-link">全部</a></li>
-            {% for c in companies|slice:":10" %}
+            {% with xslice=":"|add:navigation_count %}
+            {% for c in companies|slice:xslice %}
             <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
                 <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
             {% endfor %}
+            {% endwith %}
             <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                 <a href="#" id="menuLink" class="pure-menu-link">其他</a>
                 <ul class="pure-menu-children">
-                    {% for c in companies|slice:"10:" %}
+                    {% with xslice=navigation_count|add:":" %}
+                    {% for c in companies|slice:xslice %}
                     <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
                         <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
                     {% endfor %}
+                    {% endwith %}
                 </ul>
             </li>
         </ul>
@@ -119,9 +127,9 @@
     {% endblock %}
 </div>
 <div class="footer">
-    <p>This site is built with <3 using Django, Purecss, jQuery © <a
-            href="http://bastionhost.org" target="_blank">bastionhost.org</a> <a
-            href="https://github.com/bastionhost/cloudping/issues" target="_blank">Submit an issue</a></p>
+    <p>This site is built with <3 using Django, Purecss © <a
+            href="http://bastionhost.org" target="_blank">www.bastionhost.org</a> <a
+            href="https://github.com/bastionhost/cloudping/issues" target="_blank">Submit a cloud or regions</a></p>
 </div>
 {% block js %}
 {% endblock %}

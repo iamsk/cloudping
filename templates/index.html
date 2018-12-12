@@ -6,24 +6,32 @@
     <thead>
     <tr>
         <th class="cloudping-th">地域/公司</th>
-        {% for r in companies|slice:":10" %}
-            <th class="cloudping-th">{{ r }}</th>
+        {% with xslice=":"|add:navigation_count %}
+        {% for c in companies|slice:xslice %}
+            <th class="cloudping-th">{{ c }}</th>
         {% endfor %}
+        {% endwith %}
     </tr>
     </thead>
 
     <tbody>
     <tr>
         <td>支持地域数</td>
-        {% for c in counts|slice:":10" %}
-            <td>{{ c }}</td>
+        {% with xslice=":"|add:navigation_count %}
+        {% for c in companies|slice:xslice %}
+            <td class="cloudping-td">{{ c.region_count }}</td>
         {% endfor %}
+        {% endwith %}
     </tr>
     {% for row in rows %}
     <tr>
-        {% for c in row|slice:":11" %}
+        {% with navigation_count=navigation_count|add:1|stringformat:"i" %}
+        {% with xslice=":"|add:navigation_count %}
+        {% for c in row|slice:xslice %}
         <td class="cloudping-td">{% ifequal c True %}&#10003{% else %}{% if c %}{{ c }}{% endif %}{% endifequal %}</td>
         {% endfor %}
+        {% endwith %}
+        {% endwith %}
     </tr>
     {% endfor %}
     </tbody>

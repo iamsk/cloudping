@@ -20,6 +20,6 @@ from apps.ping.views import IndexView, CompanyView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', cache_page(60*60)(IndexView.as_view())),
-    url(r'^(?P<code>[\w|-]+)$', cache_page(60*60)(CompanyView.as_view())),
+    url(r'^$', cache_page(60*60*24)(IndexView.as_view())),
+    url(r'^(?P<code>[\w|-]+)$', cache_page(60*60*24)(CompanyView.as_view())),
 ]
