@@ -51,6 +51,10 @@ class IndexView(BaseMixin, TemplateView):
 class CompanyView(BaseMixin, TemplateView):
     template_name = "company.html"
 
+    @classmethod
+    def to_matrix(cls, l, n):
+        return [l[i:i + n] for i in range(0, len(l), n)]
+
     def get_context_data(self, **kwargs):
         context = super(CompanyView, self).get_context_data(**kwargs)
         companies = self.get_companies()
@@ -60,6 +64,5 @@ class CompanyView(BaseMixin, TemplateView):
         context['description'] = company.description
         context['navigation_count'] = self.navigation_count()
         promotions = Promotion.objects.filter(company=company).order_by('order')
-        rows = [promotions[i * 2:(i * 2) + 2] for i in range(len(promotions)/2 + 1)]
-        context['promotions'] = rows
+        context['promotions'] = self.to_matrix(promotions, 2)
         return context
