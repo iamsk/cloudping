@@ -17,7 +17,7 @@ class BaseMixin(object):
             company = Company.objects.get(pk=r['company'])
             company.region_count = r['total']
             companies.append(company)
-        return companies
+        return sorted(companies, key=lambda o: o.order)
 
     @classmethod
     def navigation_count(cls):
