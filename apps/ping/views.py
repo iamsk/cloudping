@@ -2,6 +2,7 @@
 
 from django.views.generic import TemplateView
 from django.db.models import Count
+from django.contrib.auth.models import Group
 
 from .models import Service, Company, Region
 from apps.promotion.models import Promotion
@@ -19,8 +20,9 @@ class BaseMixin(object):
         return companies
 
     @classmethod
-    def navigation_count(self):
-        return "11"
+    def navigation_count(cls):
+        group = Group.objects.first()
+        return group and group.name or "14"
 
 
 class IndexView(BaseMixin, TemplateView):
