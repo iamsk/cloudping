@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-21 02:04+0800\n"
+"PO-Revision-Date: 2018-12-20 18:03+0000\n"
+"Last-Translator:   <iamsk.info@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Translated-Using: django-rosetta 0.9.0\n"
+
+#: apps/ping/views.py:42
+msgid ""
+"Distribution and latency of the most popular cloud services. cloud service, "
+"speed, latency, ping."
+msgstr "主流云服务的地域分布及其延迟，云服务，测速，延迟，ping"
+
+#: templates/base.html:11
+msgid "Cloud Ping - Speed test"
+msgstr "云测速 - 云服务器测速"
+
+#: templates/base.html:114
+msgid "Cloud Ping"
+msgstr "云测速"
+
+#: templates/base.html:126
+msgid "ALL"
+msgstr "全部"
+
+#: templates/base.html:134
+msgid "ETC"
+msgstr "其他"
+
+#: templates/base.html:154
+msgid "Submit a cloud or regions"
+msgstr "提交云服务或服务器节点"
+
+#: templates/company.html:10
+msgid "Region"
+msgstr "地域"
+
+#: templates/company.html:11
+msgid "Alias"
+msgstr "别名"
+
+#: templates/company.html:12
+msgid "Latency"
+msgstr "延迟"
+
+#: templates/company.html:29
+msgid "Ping"
+msgstr "测速"
+
+#: templates/company.html:38
+msgid "Website"
+msgstr "官网"
+
+#: templates/company.html:38
+msgid "Visit"
+msgstr "访问"
+
+#: templates/index.html:5
+msgid "Available regions for each company"
+msgstr "各个云服务的地域支持情况"
+
+#: templates/index.html:9
+msgid "Region/Company"
+msgstr "地域/公司"
+
+#: templates/index.html:20
+msgid "Regions count"
+msgstr "支持地域数"
+
+#~ msgid "EN"
+#~ msgstr "英文"
+
+#~ msgid "ZH"
+#~ msgstr "中文"
+
+#~ msgid "English"
+#~ msgstr "英文"
+
+#~ msgid "Chinese"
+#~ msgstr "中文"

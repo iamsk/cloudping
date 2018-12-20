@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-<h3 style="letter-spacing: 0;">各个云平台全球地域支持情况</h3>
+<h3 style="letter-spacing: 0;">{% trans "Available regions for each company" %}</h3>
 <table class="pure-table pure-table-bordered cloudping-table">
     <thead>
     <tr>
-        <th class="cloudping-th">地域/公司</th>
+        <th class="cloudping-th">{% trans "Region/Company" %}</th>
         {% with xslice=":"|add:navigation_count %}
         {% for c in companies|slice:xslice %}
-            <th class="cloudping-th">{{ c }}</th>
+            <th class="cloudping-th">{{ c.name }}</th>
         {% endfor %}
         {% endwith %}
     </tr>
@@ -16,7 +17,7 @@
 
     <tbody>
     <tr>
-        <td>支持地域数</td>
+        <td class="cloudping-td">{% trans "Regions count" %}</td>
         {% with xslice=":"|add:navigation_count %}
         {% for c in companies|slice:xslice %}
             <td class="cloudping-td">{{ c.region_count }}</td>
@@ -28,7 +29,7 @@
         {% with navigation_count=navigation_count|add:1|stringformat:"i" %}
         {% with xslice=":"|add:navigation_count %}
         {% for c in row|slice:xslice %}
-        <td class="cloudping-td">{% ifequal c True %}&#10003{% else %}{% if c %}{{ c }}{% endif %}{% endifequal %}</td>
+        <td class="cloudping-td">{% ifequal c True %}&#10003{% else %}{% if c %}{{ c.name }}{% endif %}{% endifequal %}</td>
         {% endfor %}
         {% endwith %}
         {% endwith %}

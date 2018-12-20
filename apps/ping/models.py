@@ -8,19 +8,19 @@ class Company(models.Model):
     link = models.CharField(max_length=300)
     order = models.IntegerField(default=0)
     description = models.TextField(null=True, blank=True)
+    description_en = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
-        return self.name_cn or self.name_en
+        return self.name_en
 
 
 class Region(models.Model):
     name_cn = models.CharField(max_length=30, null=True, blank=True)
     name_en = models.CharField(max_length=30, null=True, blank=True)
     order = models.IntegerField(default=0)
-    description = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
-        return self.name_cn or self.name_en
+        return self.name_en
 
 
 class Service(models.Model):

@@ -14,12 +14,21 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 from django.views.decorators.cache import cache_page
 
 from apps.ping.views import IndexView, CompanyView
 
+# CACHE_TIMEOUT = 60 * 60 * 24
+CACHE_TIMEOUT = 1
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', cache_page(60*60*24)(IndexView.as_view())),
-    url(r'^(?P<code>[\w|-]+)$', cache_page(60*60*24)(CompanyView.as_view())),
+    url(r'^rosetta/', include('rosetta.urls')),
 ]
+
+urlpatterns += i18n_patterns(
+    url(r'^$', cache_page(CACHE_TIMEOUT)(IndexView.as_view()), name='index'),
+    url(r'^(?P<code>[\w|-]+)/$', cache_page(CACHE_TIMEOUT)(CompanyView.as_view()), name='company'),
+    prefix_default_language=False,
+)
