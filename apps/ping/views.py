@@ -39,7 +39,7 @@ class IndexView(BaseMixin, TemplateView):
         context['companies'] = companies
         context['company'] = 'all'
         context['rows'] = self.get_rows(companies)
-        context['description'] = _('Distribution and latency of the most popular cloud services')
+        context['description'] = _('Distribution and latency of the most popular cloud services. cloud service, speed, latency, ping.')
         context['navigation_count'] = self.navigation_count()
         return context
 

@@ -116,8 +116,8 @@ CACHES = {
 }
 
 LANGUAGES = (
-    ('en', _('EN')),
-    ('zh-hans', _('ZH')),
+    ('en', 'EN'),
+    ('zh-hans', 'ZH'),
 )
 
 LOCALE_PATHS = (
