@@ -2,30 +2,40 @@
 
 from django.views.generic import TemplateView
 from django.db.models import Count
+from django.contrib.auth.models import Group
 
 from .models import Service, Company, Region
+from apps.promotion.models import Promotion
 
 
-def get_companies():
-    rs = Service.objects.filter(status=0).values('company').annotate(total=Count('company')).order_by('-total')
-    companies, counts = [], []
-    for r in rs:
-        companies.append(Company.objects.get(pk=r['company']))
-        counts.append(r['total'])
-    return companies, counts
+class BaseMixin(object):
+    @classmethod
+    def get_companies(cls):
+        rs = Service.objects.filter(status=0).values('company').annotate(total=Count('company')).order_by('-total')
+        companies = []
+        for r in rs:
+            company = Company.objects.get(pk=r['company'])
+            company.region_count = r['total']
+            companies.append(company)
+        return sorted(companies, key=lambda o: o.order)
+
+    @classmethod
+    def navigation_count(cls):
+        group = Group.objects.first()
+        return group and group.name or "14"
 
 
-class IndexView(TemplateView):
-    template_name = "cloudping.html"
+class IndexView(BaseMixin, TemplateView):
+    template_name = "index.html"
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        companies, counts = get_companies()
+        companies = self.get_companies()
         context['companies'] = companies
         context['company'] = 'all'
-        context['counts'] = counts
         context['rows'] = self.get_rows(companies)
         context['description'] = 'Distribution and latency of the most popular cloud platforms'
+        context['navigation_count'] = self.navigation_count()
         return context
 
     @classmethod
@@ -40,14 +50,21 @@ class IndexView(TemplateView):
         return rows
 
 
-class CompanyView(TemplateView):
+class CompanyView(BaseMixin, TemplateView):
     template_name = "company.html"
+
+    @classmethod
+    def to_matrix(cls, l, n):
+        return [l[i:i + n] for i in range(0, len(l), n)]
 
     def get_context_data(self, **kwargs):
         context = super(CompanyView, self).get_context_data(**kwargs)
-        companies, _ = get_companies()
+        companies = self.get_companies()
         context['companies'] = companies
         context['company'] = company = Company.objects.filter(code=kwargs['code']).first()
         context['ss'] = Service.objects.filter(company=context['company'], status=0).order_by('region__order')
         context['description'] = company.description
+        context['navigation_count'] = self.navigation_count()
+        promotions = Promotion.objects.filter(company=company).order_by('order')
+        context['promotions'] = self.to_matrix(promotions, 2)
         return context

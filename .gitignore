@@ -2,3 +2,5 @@
 *.pyc
 *.log
 static/admin/
+env/
+db.sqlite3
