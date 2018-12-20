@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% get_current_language as LANG %}
 
 {% block content %}
     <div class="pure-u-1-2">
         <table class="pure-table pure-table-bordered left">
             <thead>
             <tr>
-                <th>Region</th>
-                <th>Alias</th>
-                <th>Latency</th>
+                <th>{% trans "Region" %}</th>
+                <th>{% trans "Alias" %}</th>
+                <th>{% trans "Latency" %}</th>
             </tr>
             </thead>
 
             <tbody>
             {% for s in ss %}
                 <tr>
-                    <td>{{ s.region.name_en }}</td>
+                    <td>{% if LANG == 'en' %}{{ s.region.name_en }}{% else %}{{ s.region.name_cn }}{% endif %}</td>
                     <td>{{ s.code }}</td>
                     <td class="latency" endpoint='{{ s.endpoint }}'></td>
                 </tr>
@@ -24,7 +26,7 @@
                 <td></td>
                 <td>
                     <input type="text" name="_love_oldlau" hidden>
-                    <button class="pure-button" id="pingbutton">Ping</button>
+                    <button class="pure-button" id="pingbutton">{% trans "Ping" %}</button>
                 </td>
             </tr>
             </tbody>
@@ -32,8 +34,8 @@
     </div>
     <div class="pure-u-1-2">
         <div>
-            <p>{{ company.description }}</p>
-            <p>Website: <a href="{{ company.link }}" target="_blank">Link</a></p>
+            <p>{{ description }}</p>
+            <p>{% trans "Website" %}: <a href="{{ company.link }}" target="_blank">{% trans "Visit" %}</a></p>
         </div>
         {% for row in promotions %}
         <div class="each-row">

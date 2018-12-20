@@ -1,12 +1,14 @@
+{% load i18n %}
+{% get_available_languages as languages %}
+{% get_current_language as LANG %}
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords"
-          content="cloud hosting, cloud service, cloud compute, cloud server, speed, speed test, latency, ping, cloudping, cloud ping, distribution, {% for c in companies %}{{ c }}, {% endfor %}">
     <meta name="description" content="{{ description }}">
-    <title>Bastionhost - Cloud Ping</title>
+    <title>{% trans "Cloud Ping" %}</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
     <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
     <script>
@@ -53,7 +55,7 @@
 
     .cloudping-table {
         letter-spacing: 0;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .cloudping-th {
@@ -109,25 +111,32 @@
 </style>
 <div class="header">
     <div class="pure-menu title cloudping-th">
-        <a href="/" class="pure-menu-heading">Cloud Ping</a>
+        <a href="{% url 'index' %}" class="pure-menu-heading">{% trans "Cloud Ping" %}</a>
+    </div>
+    <div class="pure-menu" style="text-align: right">
+        {% for lang_code, lang_name in languages %}
+            {% language lang_code %}
+            <a href="{% url 'index' %}">{{ lang_name }}</a>
+            {% endlanguage %}
+        {% endfor %}
     </div>
     <div class="pure-menu pure-menu-horizontal menu">
         <ul class="pure-menu-list">
             <li class="pure-menu-item {% ifequal company 'all' %}pure-menu-selected{% endifequal %}">
-                <a href="/" class="pure-menu-link">All</a></li>
+                <a href="{% url 'index' %}" class="pure-menu-link">{% trans "ALL" %}</a></li>
             {% with xslice=":"|add:navigation_count %}
             {% for c in companies|slice:xslice %}
             <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
-                <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
+                <a href="{% url 'company' code=c.code %}" class="pure-menu-link">{{ c.name }}</a></li>
             {% endfor %}
             {% endwith %}
             <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                <a href="#" id="menuLink" class="pure-menu-link">Other</a>
+                <a href="#" id="menuLink" class="pure-menu-link">{% trans "ETC" %}</a>
                 <ul class="pure-menu-children">
                     {% with xslice=navigation_count|add:":" %}
                     {% for c in companies|slice:xslice %}
                     <li class="pure-menu-item {% ifequal company c %}pure-menu-selected{% endifequal %}">
-                        <a href="/{{ c.code }}" class="pure-menu-link">{{ c }}</a></li>
+                        <a href="/{{ c.code }}" class="pure-menu-link">{{ c.name }}</a></li>
                     {% endfor %}
                     {% endwith %}
                 </ul>
@@ -142,7 +151,7 @@
 <div class="footer">
     <p>This site is built with <3 using Django, Purecss © <a
             href="http://bastionhost.org" target="_blank">www.bastionhost.org</a> <a
-            href="https://github.com/bastionhost/cloudping/issues" target="_blank">Submit a cloud or regions</a></p>
+            href="https://github.com/bastionhost/cloudping/issues" target="_blank">{% trans "Submit a cloud or regions" %}</a></p>
 </div>
 {% block js %}
 {% endblock %}
