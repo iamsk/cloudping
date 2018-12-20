@@ -19,8 +19,8 @@ from django.views.decorators.cache import cache_page
 
 from apps.ping.views import IndexView, CompanyView
 
-# CACHE_TIMEOUT = 60 * 60 * 24
-CACHE_TIMEOUT = 1
+CACHE_TIMEOUT = 60 * 60 * 24
+#CACHE_TIMEOUT = 1
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
