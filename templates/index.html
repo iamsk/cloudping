@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
+{% block title %}
+<title>{% trans "Cloud Ping - Speed test" %}</title>
+{% endblock %}
+
 {% block content %}
 <h3 style="letter-spacing: 0;">{% trans "Available regions for each company" %}</h3>
 <table class="pure-table pure-table-bordered cloudping-table">

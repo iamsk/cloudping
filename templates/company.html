@@ -2,6 +2,10 @@
 {% load i18n %}
 {% get_current_language as LANG %}
 
+{% block title %}
+<title>{% trans "Cloud Ping" %} - {% if LANG == 'en' %}{{ company.name_en }}{% else %}{{ company.name_cn }}{% endif %}</title>
+{% endblock %}
+
 {% block content %}
     <div class="pure-u-1-2">
         <table class="pure-table pure-table-bordered left">
