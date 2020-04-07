@@ -1,6 +1,8 @@
 .idea/
+logs/
 *.pyc
 *.log
+db.sqlite3.*
 static/admin/
 env/
 db.sqlite3
