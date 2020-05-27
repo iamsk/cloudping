@@ -35,6 +35,7 @@ Run server:
 * Google Cloud: https://cloud.google.com/compute/docs/regions-zones/
 * Tencent Cloud: https://cloud.tencent.com/document/product/213/6091
 * Baidu Cloud: https://cloud.baidu.com/doc/BOS/S3.html#.E6.9C.8D.E5.8A.A1.E5.9F.9F.E5.90.8D
+* Huawei Cloud: https://developer.huaweicloud.com/endpoint?OBS
 * Qiniu Cloud: https://developer.qiniu.com/kodo/manual/1671/region-endpoint
 * Qing Cloud: https://docs.qingcloud.com/qingstor/api/common/overview.html#地址构成
 * Vultr: https://www.vultr.com/faq/#downloadspeedtests
@@ -43,7 +44,6 @@ Run server:
 * UCloud: https://docs.ucloud.cn/api/summary/regionlist
 * Linode: https://www.linode.com/speedtest
 * MOS: https://www.mtyun.com/doc/products/manage/Region/index
-* Huawei Cloud: https://support.huaweicloud.com/obs/index.html
 
 ## Refs
 
