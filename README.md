@@ -25,25 +25,25 @@ Install dependencies:
 
 Run server:
 
-`python manage.py runserver --settings=cloudping.settings.development`
+`python manage.py runserver --settings=cloudping.settings.dev`
 
 ## Cloud endpoints
 
-* Microsoft Azure: https://azure.microsoft.com/zh-cn/regions/
 * AWS: http://ec2-reachability.amazonaws.com/
-* Digital Ocean: http://speedtest-nyc1.digitalocean.com/
+* Microsoft Azure: https://azure.microsoft.com/zh-cn/regions/
+* Aliyun: https://help.aliyun.com/document_detail/40654.html
 * Google Cloud: https://cloud.google.com/compute/docs/regions-zones/
 * Tencent Cloud: https://cloud.tencent.com/document/product/213/6091
 * Baidu Cloud: https://cloud.baidu.com/doc/BOS/S3.html#.E6.9C.8D.E5.8A.A1.E5.9F.9F.E5.90.8D
+* Huawei Cloud: https://support.huaweicloud.com/obs/index.html
+* Ksyun: https://docs.ksyun.com/directories/1782
 * Qiniu Cloud: https://developer.qiniu.com/kodo/manual/1671/region-endpoint
 * Qing Cloud: https://docs.qingcloud.com/qingstor/api/common/overview.html#地址构成
-* Vultr: https://www.vultr.com/faq/#downloadspeedtests
-* Aliyun: https://help.aliyun.com/document_detail/40654.html
-* Ksyun: https://docs.ksyun.com/directories/1782
 * UCloud: https://docs.ucloud.cn/api/summary/regionlist
-* Linode: https://www.linode.com/speedtest
 * MOS: https://www.mtyun.com/doc/products/manage/Region/index
-* Huawei Cloud: https://support.huaweicloud.com/obs/index.html
+* Digital Ocean: http://speedtest-nyc1.digitalocean.com/
+* Linode: https://www.linode.com/speedtest
+* Vultr: https://www.vultr.com/faq/#downloadspeedtests
 
 ## Refs
 
