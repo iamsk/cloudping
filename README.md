@@ -30,17 +30,17 @@ Run server:
 ## Cloud endpoints
 
 * AWS: http://ec2-reachability.amazonaws.com/
-* Microsoft Azure: https://azure.microsoft.com/zh-cn/regions/
 * Aliyun: https://help.aliyun.com/document_detail/40654.html
-* Google Cloud: https://cloud.google.com/compute/docs/regions-zones/
-* Tencent Cloud: https://cloud.tencent.com/document/product/213/6091
 * Baidu Cloud: https://cloud.baidu.com/doc/BOS/S3.html#.E6.9C.8D.E5.8A.A1.E5.9F.9F.E5.90.8D
-* Huawei Cloud: https://support.huaweicloud.com/obs/index.html
-* Ksyun: https://docs.ksyun.com/directories/1782
+* Tencent Cloud: https://cloud.tencent.com/document/product/213/6091
+* Huawei Cloud: https://developer.huaweicloud.com/endpoint?OBS
+* Kingsoft Cloud: https://docs.ksyun.com/documents/6761
 * Qiniu Cloud: https://developer.qiniu.com/kodo/manual/1671/region-endpoint
 * Qing Cloud: https://docs.qingcloud.com/qingstor/api/common/overview.html#地址构成
 * UCloud: https://docs.ucloud.cn/api/summary/regionlist
 * MOS: https://www.mtyun.com/doc/products/manage/Region/index
+* Microsoft Azure: https://azure.microsoft.com/zh-cn/regions/
+* Google Cloud: https://cloud.google.com/compute/docs/regions-zones/
 * Digital Ocean: http://speedtest-nyc1.digitalocean.com/
 * Linode: https://www.linode.com/speedtest
 * Vultr: https://www.vultr.com/faq/#downloadspeedtests
