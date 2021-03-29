@@ -17,7 +17,9 @@ This project has the following basic apps:
 To set up a development environment quickly, install Python 2.x first. It
 comes with virtualenv built-in. so create a virtual environment with:
 
-`mkvirtualenv cloudping`
+`virtualenv env`
+
+`source env/bin/activate`
 
 Install dependencies:
 
@@ -26,6 +28,8 @@ Install dependencies:
 Run server:
 
 `python manage.py runserver --settings=cloudping.settings.dev`
+
+`sh configs/setup.sh` for production!
 
 ## Cloud endpoints
 
